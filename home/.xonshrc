@@ -1,3 +1,141 @@
-#
-# Try awesome xonshrc - https://github.com/anki-code/awesome-xonshrc/blob/main/xonshrc
-#
+#xpip install xontrib-jedi
+#pip install xontrib-readable-traceback
+#xpip install xontrib-xlsd
+#pip install xontrib-kitty
+#xpip install -U xontrib-pipeliner
+#xpip install -U xontrib-powerline2
+#xpip install -U xontrib-output-search
+#xpip install -U xontrib-sh
+#pip install xontrib-fzf-widgets
+#sudo apt install zoxide fzf
+#yay -S carapace-bin
+
+
+# $PATH.append('/home/ubuntu/.cargo/bin')
+
+
+
+
+
+$XONSH_CAPTURE_ALWAYS=True
+
+
+COMPLETIONS_CONFIRM=True
+#exec($(carapace _carapace))
+
+execx($(zoxide init xonsh), 'exec', __xonsh__.ctx, filename='zoxide')
+
+
+xontrib load xontrib-zoxide
+xontrib load jedi
+xontrib load readable-traceback
+#https://github.com/vaaaaanquish/xontrib-readable-traceback
+
+xontrib load xlsd
+xontrib load kitty
+xontrib load pipeliner
+
+
+xonsh_color_style="fruity"
+
+
+def cwd_base():
+    return ["{cwd_base}", "BLACK", "#00adee"]
+
+def bg_jobs(*args):
+    jbs = $(jobs)
+    bg_jbs = jbs.count("running")
+    s = '💼' + str(bg_jbs) + "|" + str(len(jbs.split('\n'))-1)
+    if s == "💼0|0":
+	return None
+
+    return [s, "BLACK", "BLUE"]
+
+def timing_txt():
+    return ["Elapsed time:", "BLACK", "#00adee"]
+
+def prev_cmd():
+    prev_cmd = __xonsh__.history[-1].cmd if __xonsh__.history else None
+    if not prev_cmd:
+        return ["Hello", "BLACK", "#FFadee"]
+    prev_cmd = prev_cmd.rstrip()
+    return [prev_cmd, "BLACK", "#DAA520"]
+
+def bar():
+    size = $(stty size)
+    y, x = size.split()
+    x = int(x)
+    str = " "*x
+    return [str, "BLACK", "#CD853F"]
+
+def lcltime():
+    return ["{localtime}", "BLACK", "#00adee"]
+
+$PL_EXTRA_SEC = {"cwd_base": cwd_base,
+                 "bg_jobs": bg_jobs,
+                 "timing_txt": timing_txt,
+                 "prev_cmd": prev_cmd,
+                 "bar": bar,
+                 "lcltime": lcltime
+                 }
+
+$PL_COLORS= {}
+$PL_COLORS['history'] = ("BOLD_WHITE", "#EC2D01")
+$PL_COLORS['timing'] = ("BOLD_BLACK", "#800080")
+
+$PL_COLORS['cwd'] = ("BOLD_BLACK", "#FF8800")
+
+
+$XONSH_CTRL_BKSP_DELETION=True
+
+
+$PL_PROMPT="timing_txt>timing>prev_cmd>bar>\nhistory>bg_jobs"
+$PL_TOOLBAR='lcltime>who>cwd'
+$PL_RPROMPT = 'short_cwd>virtualenv>branch'
+xontrib load powerline2
+
+$XONTRIB_SH_SHELLS = ['bash', 'sh']
+xontrib load sh
+
+
+xontrib load output_search
+
+
+
+$fzf_history_binding = "c-r"  # Ctrl+R
+$fzf_ssh_binding = "c-s"      # Ctrl+S
+$fzf_file_binding = "c-t"      # Ctrl+T
+#$fzf_dir_binding = "c-g"      # Ctrl+G
+xontrib load fzf-widgets
+
+
+from prompt_toolkit.keys import Keys
+@events.on_ptk_create
+def custom_keybindings(bindings, **kw):
+    handler = bindings.add
+
+    def _navi_call(*args):
+        result = $(navi *args </dev/tty)
+        print(result)
+
+
+    @handler(Keys.ControlG)
+    def navi_widget(event, *args):
+        buffer = event.current_buffer.text
+
+        $lst = buffer.split('|')[-1]
+
+        $lst_command = $(echo $lst | navi fn widget::last_command)
+
+
+        navi --print --query $lst_command
+
+
+
+
+
+
+
+
+
+

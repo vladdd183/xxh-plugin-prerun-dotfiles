@@ -31,11 +31,11 @@ import shutil as _shutil
 from xonsh.platform import ON_LINUX #, ON_DARWIN, ON_WINDOWS, ON_WSL, IN_APPIMAGE, ON_CYGWIN, ON_MSYS, ON_POSIX, ON_FREEBSD, ON_DRAGONFLY, ON_NETBSD, ON_OPENBSD
 
 xontrib load onepath
-
+$XONTRIB_ONEPATH_ACTIONS['text/'] = 'nvim'
 def _cdls(args):
      cd @(args[0])
      if int($(ls | wc -l).strip()) < 100:
-         ls --group-directories-first -a --color
+         ls
      else:
      	print('>100 files')
 aliases['cdls'] = _cdls

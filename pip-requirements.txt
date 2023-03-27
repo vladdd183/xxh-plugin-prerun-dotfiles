@@ -12,7 +12,6 @@
 
 
 
-fzf
 neovim
 xontrib-output-search
 xontrib-jump-to-dir
@@ -23,7 +22,7 @@ xontrib-onepath
 xontrib-readable-traceback
 xontrib-fzf-widgets
 xontrib-xlsd
-
+xontrib-term-integrations
 
 
 

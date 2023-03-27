@@ -12,7 +12,6 @@
 
 
 
-neovim
 xontrib-output-search
 xontrib-jump-to-dir
 xontrib-abbrevs

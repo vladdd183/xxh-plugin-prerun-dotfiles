@@ -12,17 +12,17 @@
 
 
 
-xontrib-jedi
-xontrib-readable-traceback
-xontrib-xlsd
-xontrib-kitty
-xontrib-pipeliner
-xontrib-powerline2
+fzf
+neovim
 xontrib-output-search
+xontrib-jump-to-dir
+xontrib-abbrevs
 xontrib-sh
+xontrib-pipeliner
+xontrib-onepath
+xontrib-readable-traceback
 xontrib-fzf-widgets
-
-
+xontrib-xlsd
 
 
 

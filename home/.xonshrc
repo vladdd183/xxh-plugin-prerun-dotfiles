@@ -14,16 +14,54 @@
 # $PATH.append('/home/ubuntu/.cargo/bin')
 
 
-
-
-
-$XONSH_CAPTURE_ALWAYS=True
-
-
 COMPLETIONS_CONFIRM=True
-#exec($(carapace _carapace))
+exec($(carapace _carapace))
 
-execx($(zoxide init xonsh), 'exec', __xonsh__.ctx, filename='zoxide')
+$XONTRIB_OUTPUT_SEARCH_KEY='f'
+xontrib load output_search
+
+$XONSH_HISTORY_BACKEND = 'sqlite'
+xontrib load jump_to_dir
+
+$XONTRIB_SH_SHELLS = ['bash', 'sh']  # default
+xontrib load sh
+
+
+import shutil as _shutil
+from xonsh.platform import ON_LINUX #, ON_DARWIN, ON_WINDOWS, ON_WSL, IN_APPIMAGE, ON_CYGWIN, ON_MSYS, ON_POSIX, ON_FREEBSD, ON_DRAGONFLY, ON_NETBSD, ON_OPENBSD
+
+xontrib load onepath
+
+def _cdls(args):
+     cd @(args[0])
+     if int($(ls | wc -l).strip()) < 100:
+         ls --group-directories-first -a --color
+     else:
+     	print('>100 files')
+aliases['cdls'] = _cdls
+del _cdls
+
+$XONTRIB_ONEPATH_ACTIONS['<DIR>'] = 'cdls'
+
+
+if ON_LINUX and _shutil.which('nvim'):
+    $XONTRIB_ONEPATH_ACTIONS['text/'] = 'nvim'
+    
+    
+
+xontrib load pipeliner
+
+xontrib load abbrevs
+abbrevs['gst'] = 'git status'
+
+xontrib load skim # Initializes skim (fuzzy finder)
+# configure like in the example above, but replace envx['VAR'] with $VAR
+$X_SKIM_KEY_HISTORY = "c-s"
+
+
+#$XONSH_CAPTURE_ALWAYS=True
+
+
 
 
 xontrib load xontrib-zoxide

@@ -59,6 +59,7 @@ xontrib load skim # Initializes skim (fuzzy finder)
 $X_SKIM_KEY_HISTORY = "c-s"
 
 
+'''
 #$XONSH_CAPTURE_ALWAYS=True
 
 
@@ -169,7 +170,7 @@ def custom_keybindings(bindings, **kw):
         navi --print --query $lst_command
 
 
-
+'''
 
 
 

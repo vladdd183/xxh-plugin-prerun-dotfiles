@@ -19,11 +19,11 @@ rm -rf $build_dir && mkdir -p $build_dir
 echo "ARCH<==>$ARCH"
 mkdir -p build/.local/bin/
 if [ "$ARCH" == "x86_64" ]; then
-    cp $CDIR/bin/x86_64/* build/.local/bin/
+    cp $CDIR/bin/x86_64/* $build_dir/home/.local/bin/
 elif [ "$ARCH" == "arm64" ]; then
-    cp $CDIR/bin/arm64/* build/.local/bin/
+    cp $CDIR/bin/arm64/* $build_dir/home/.local/bin/
 elif [ "$ARCH" == "aarch64" ]; then
-    cp $CDIR/bin/aarch64/* build/.local/bin/
+    cp $CDIR/bin/aarch64/* $build_dir/home/.local/bin/
 else
     echo "Unsupported architecture: $ARCH"
     exit 1

@@ -16,6 +16,20 @@ done
 cd $CDIR
 rm -rf $build_dir && mkdir -p $build_dir
 
+ARCH=$XXH_HOST_ARCH
+
+if [ "$ARCH" == "x86_64" ]; then
+    cp $CDIR/bin/x86_64/* build/.local/bin/
+elif [ "$ARCH" == "arm64" ]; then
+    cp $CDIR/bin/arm64/* build/.local/bin/
+elif [ "$ARCH" == "aarch64" ]; then
+    cp $CDIR/bin/aarch64/* build/.local/bin/
+else
+    echo "Unsupported architecture: $ARCH"
+    exit 1
+fi
+
+
 for f in *prerun.sh home
 do
     cp -R $CDIR/$f $build_dir/

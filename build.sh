@@ -16,8 +16,7 @@ done
 cd $CDIR
 rm -rf $build_dir && mkdir -p $build_dir
 
-ARCH=$XXH_HOST_ARCH
-
+echo "ARCH<==>$ARCH"
 if [ "$ARCH" == "x86_64" ]; then
     cp $CDIR/bin/x86_64/* build/.local/bin/
 elif [ "$ARCH" == "arm64" ]; then

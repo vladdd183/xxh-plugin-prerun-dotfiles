@@ -1,1 +1,0 @@
-{"schema_version":"1.1","primary_source":{"package":"pyright","type":"npm"},"links":{"share":{},"opt":{},"bin":{"pyright":"node_modules\/.bin\/pyright","pyright-langserver":"node_modules\/.bin\/pyright-langserver"}},"secondary_sources":[],"name":"pyright","metrics":{"completion_time":1678534067904,"start_time":1678534062688}}

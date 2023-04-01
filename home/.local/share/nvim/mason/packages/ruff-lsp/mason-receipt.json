@@ -1,1 +1,0 @@
-{"name":"ruff-lsp","primary_source":{"type":"pip3","package":"ruff-lsp"},"links":{"bin":{"ruff-lsp":"venv\/bin\/ruff-lsp"},"opt":{},"share":{}},"metrics":{"completion_time":1678533965460,"start_time":1678533957944},"secondary_sources":[],"schema_version":"1.1"}

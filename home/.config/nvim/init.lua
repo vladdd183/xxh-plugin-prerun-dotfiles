@@ -21,4 +21,4 @@ require "user.autocommands"
 
 require "user.legendary"
 require "user.whichkey"
-require "user.copilot"
+-- require "user.copilot"

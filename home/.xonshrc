@@ -58,8 +58,10 @@ xontrib load skim # Initializes skim (fuzzy finder)
 # configure like in the example above, but replace envx['VAR'] with $VAR
 $X_SKIM_KEY_HISTORY = "c-s"
 
+xontrib load xlsd
 
-'''
+
+##########################
 #$XONSH_CAPTURE_ALWAYS=True
 
 
@@ -170,8 +172,7 @@ def custom_keybindings(bindings, **kw):
         navi --print --query $lst_command
 
 
-'''
-
+##############
 
 
 

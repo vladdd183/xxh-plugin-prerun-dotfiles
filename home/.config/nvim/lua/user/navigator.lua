@@ -5,7 +5,6 @@ if not present then
 end
 
 
-
 local opts = {
   debug = false, -- log output
   width = 0.75, -- value of cols
@@ -19,10 +18,10 @@ local opts = {
   lines_show_prompt = 10, -- when the result list items number more than lines_show_prompt,
   -- fuzzy finder prompt will be shown
   combined_attach = 'both', -- both: use both customized attach and navigator default attach, mine: only use my attach defined in vimrc
-  on_attach = function(client, bufnr)
-    vim.cmd[[lua require('copilot.suggestion').toggle_auto_trigger()]]
-    -- your on_attach will be called at end of navigator on_attach
-  end,
+  -- on_attach = function(client, bufnr)
+  --   vim.cmd[[lua require('copilot.suggestion').toggle_auto_trigger()]]
+  --   -- your on_attach will be called at end of navigator on_attach
+  -- end,
   ts_fold = false,
   treesitter_analysis = true, -- treesitter variable context
   treesitter_analysis_max_num = 100, -- how many items to run treesitter analysis
@@ -94,7 +93,7 @@ local opts = {
   icons = {
     icons = true, -- set to false to use system default ( if you using a terminal does not have nerd/icon)
     -- Code action
-    code_action_icon ="", -- '🏏',
+    code_action_icon = "", -- '🏏',
     -- code lens
     code_lens_action_icon = '👓',
     -- Diagnostics

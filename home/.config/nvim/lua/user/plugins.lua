@@ -203,7 +203,6 @@ return packer.startup(function(use)
           },
         },
       })
-
     end,
   }
   use { "kkharji/sqlite.lua" }
@@ -231,8 +230,8 @@ return packer.startup(function(use)
             { cursor = "●", texthl = "SmoothCursorYellow" },
             { cursor = "●", texthl = "SmoothCursorGreen" },
             { cursor = "•", texthl = "SmoothCursorAqua" },
-            { cursor = ".", texthl = "SmoothCursorBlue" },
-            { cursor = ".", texthl = "SmoothCursorPurple" },
+            { cursor = ".",   texthl = "SmoothCursorBlue" },
+            { cursor = ".",   texthl = "SmoothCursorPurple" },
           },
           tail = { cursor = nil, texthl = "SmoothCursor" }
         },
@@ -273,8 +272,10 @@ return packer.startup(function(use)
   use { "rcarriga/nvim-dap-ui" }
   use { "theHamsta/nvim-dap-virtual-text",
     config = function()
-      require("nvim-dap-virtual-text").setup({ highlight_new_as_changed = false,
-        show_stop_reason = true })
+      require("nvim-dap-virtual-text").setup({
+        highlight_new_as_changed = false,
+        show_stop_reason = true
+      })
     end
   }
   use { 'nvim-telescope/telescope-fzf-native.nvim',

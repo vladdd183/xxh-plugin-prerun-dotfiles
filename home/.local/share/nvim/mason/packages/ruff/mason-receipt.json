@@ -1,0 +1,1 @@
+{"name":"ruff","primary_source":{"type":"pip3","package":"ruff"},"links":{"bin":{"ruff":"venv\/bin\/ruff"},"opt":{},"share":{}},"metrics":{"completion_time":1678534010724,"start_time":1678534006723},"secondary_sources":[],"schema_version":"1.1"}

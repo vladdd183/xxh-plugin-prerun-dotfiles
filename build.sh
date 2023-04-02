@@ -16,10 +16,11 @@ done
 cd $CDIR
 rm -rf $build_dir && mkdir -p $build_dir
 
-REMOTE_ARCH="$(uname -m)"
+remote_arch=$(ssh $XXH_HOST "uname -m")
+echo "Архитектура удаленного сервера: $remote_arch"
 
-echo "ARCH<==>$REMOTE_ARCH"
 mkdir -p $build_dir/home/.local/bin/
+
 if [ "$REMOTE_ARCH" == "x86_64" ]; then
     cp $CDIR/bin/x86_64/* $build_dir/home/.local/bin/
 elif [ "$REMOTE_ARCH" == "arm64" ]; then

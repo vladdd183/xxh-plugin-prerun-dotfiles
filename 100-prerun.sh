@@ -4,6 +4,9 @@ else
   done_file=$XXH_HOME/.xxh-plugin-prerun-dotfiles-done
 fi
 
+REMOTE_ARCH="$(uname -m)"
+
+echo "ARCH<==>$REMOTE_ARCH"
 if [[ ! -f $done_file ]]; then
   CURR_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
   cd $CURR_DIR/home

@@ -16,7 +16,7 @@ done
 cd $CDIR
 rm -rf $build_dir && mkdir -p $build_dir
 
-REMOTE_ARCH=$(ssh $XXH_USER@$XXH_HOST "uname -m")
+REMOTE_ARCH="$(uname -m)"
 
 echo "ARCH<==>$REMOTE_ARCH"
 mkdir -p $build_dir/home/.local/bin/

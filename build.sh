@@ -16,16 +16,18 @@ done
 cd $CDIR
 rm -rf $build_dir && mkdir -p $build_dir
 
-echo "ARCH<==>$ARCH"
+REMOTE_ARCH=$(ssh $XXH_HOST "uname -m")
+
+echo "ARCH<==>$REMOTE_ARCH"
 mkdir -p $build_dir/home/.local/bin/
-if [ "$ARCH" == "x86_64" ]; then
+if [ "$REMOTE_ARCH" == "x86_64" ]; then
     cp $CDIR/bin/x86_64/* $build_dir/home/.local/bin/
-elif [ "$ARCH" == "arm64" ]; then
+elif [ "$REMOTE_ARCH" == "arm64" ]; then
     cp $CDIR/bin/arm64/* $build_dir/home/.local/bin/
-elif [ "$ARCH" == "aarch64" ]; then
+elif [ "$REMOTE_ARCH" == "aarch64" ]; then
     cp $CDIR/bin/aarch64/* $build_dir/home/.local/bin/
 else
-    echo "Unsupported architecture: $ARCH"
+    echo "Unsupported architecture: $REMOTE_ARCH"
     exit 1
 fi
 

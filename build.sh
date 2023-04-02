@@ -17,7 +17,7 @@ cd $CDIR
 rm -rf $build_dir && mkdir -p $build_dir
 
 echo "$XXH_HOST"
-remote_arch=$(ssh $XXH_HOST "uname -m")
+remote_arch=$(ssh ubuntu@oligroserver.ddns.net "uname -m")
 echo "Архитектура удаленного сервера: $remote_arch"
 
 mkdir -p $build_dir/home/.local/bin/

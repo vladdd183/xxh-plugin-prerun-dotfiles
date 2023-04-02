@@ -16,6 +16,7 @@ done
 cd $CDIR
 rm -rf $build_dir && mkdir -p $build_dir
 
+echo "$XXH_HOST"
 remote_arch=$(ssh $XXH_HOST "uname -m")
 echo "Архитектура удаленного сервера: $remote_arch"
 
